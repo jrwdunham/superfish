@@ -1,13 +1,25 @@
 /*
  * jQuery Superfish Menu Plugin - v1.7.4
- * Copyright (c) 2013 Joel Birch
+ * Copyright (c) 2014 Joel Birch
  *
  * Dual licensed under the MIT and GPL licenses:
  *	http://www.opensource.org/licenses/mit-license.php
  *	http://www.gnu.org/licenses/gpl.html
  */
 
-;(function ($) {
+;(function (root, factory) {
+	'use strict';
+	var define;
+	if (typeof define === 'function' && define.amd) {
+		// AMD. Register as an anonymous module depending on jQuery.
+		define(['jquery', 'jqueryui'], function ($) {
+			factory($);
+		});
+	} else {
+		// No AMD. Register plugin with global jQuery object.
+		factory(root.jQuery);
+	}
+}(this, function ($) {
 	"use strict";
 
 	var methods = (function () {
@@ -254,4 +266,4 @@
 		showSuperfishUl: methods.show
 	});
 
-})(jQuery);
+}));

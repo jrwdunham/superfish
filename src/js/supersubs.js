@@ -14,7 +14,19 @@
  *
  */
 
-;(function($){ // $ will refer to jQuery within this closure
+;(function (root, factory) {
+	'use strict';
+	var define;
+	if (typeof define === 'function' && define.amd) {
+		// AMD. Register as an anonymous module depending on jQuery.
+		define(['jquery', 'jqueryui'], function ($) {
+			factory($);
+		});
+	} else {
+		// No AMD. Register plugin with global jQuery object.
+		factory(root.jQuery);
+	}
+}(this, function ($) {
 
 	$.fn.supersubs = function(options){
 		var opts = $.extend({}, $.fn.supersubs.defaults, options);
@@ -88,4 +100,4 @@
 		extraWidth		: 0			// extra width can ensure lines don't sometimes turn over due to slight browser differences in how they round-off values
 	};
 	
-})(jQuery); // plugin code ends
+})); // plugin code ends

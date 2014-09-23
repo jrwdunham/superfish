@@ -7,7 +7,19 @@
  *	http://www.gnu.org/licenses/gpl.html
  */
 
-(function ($) {
+(function (root, factory) {
+	'use strict';
+	var define;
+	if (typeof define === 'function' && define.amd) {
+		// AMD. Register as an anonymous module depending on jQuery.
+		define(['jquery', 'jqueryui'], function ($) {
+			factory($);
+		});
+	} else {
+		// No AMD. Register plugin with global jQuery object.
+		factory(root.jQuery);
+	}
+}(this, function ($) {
 	"use strict";
 
 	var methods = (function () {
@@ -254,4 +266,4 @@
 		showSuperfishUl: methods.show
 	});
 
-})(jQuery);
+}));
