@@ -19,7 +19,7 @@
 	var define;
 	if (typeof define === 'function' && define.amd) {
 		// AMD. Register as an anonymous module depending on jQuery.
-		define(['jquery', 'jqueryui'], function ($) {
+		define(['jquery'], function ($) {
 			factory($);
 		});
 	} else {
